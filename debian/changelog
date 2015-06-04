@@ -1,4 +1,4 @@
-networking-cisco (0.0.1-1) UNRELEASED; urgency=medium
+networking-cisco (2015.1.0-1) unstable; urgency=medium
 
   * Initial release. (Closes: #XXXXXX)
 
