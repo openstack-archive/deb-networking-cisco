@@ -1,5 +1,5 @@
 networking-cisco (2015.1.0-1) unstable; urgency=medium
 
-  * Initial release. (Closes: #XXXXXX)
+  * Initial release. (Closes: #787733)
 
  -- Thomas Goirand <zigo@debian.org>  Tue, 17 Mar 2015 16:02:15 +0100
