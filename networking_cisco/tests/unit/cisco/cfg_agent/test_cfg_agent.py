@@ -20,8 +20,9 @@ from neutron.agent.common import config
 from neutron.common import config as base_config
 from neutron.common import constants as l3_constants
 from neutron.openstack.common import uuidutils
-from neutron.plugins.cisco.cfg_agent import cfg_agent
 from neutron.tests import base
+
+from networking_cisco.plugins.cisco.cfg_agent import cfg_agent
 
 _uuid = uuidutils.generate_uuid
 HOSTNAME = 'myhost'
@@ -62,6 +63,12 @@ def prepare_router_data(enable_snat=None, num_internal_ports=1):
     return router, int_ports
 
 
+class FakeFirewallSvcHelper(object):
+
+    def __init__(self, host, conf, cfg_agent):
+        pass
+
+
 class TestCiscoCfgAgentWIthStateReporting(base.BaseTestCase):
 
     def setUp(self):
@@ -69,10 +76,17 @@ class TestCiscoCfgAgentWIthStateReporting(base.BaseTestCase):
         config.register_agent_state_opts_helper(cfg.CONF)
         self.conf.register_opts(base_config.core_opts)
         self.conf.register_opts(cfg_agent.CiscoCfgAgent.OPTS, "cfg_agent")
+        # set class path to the fake firewall class since the real
+        # firewall calss will be in another package (neutron-fwaas)
+        self.conf.set_override('fw_svc_helper_class',
+                               'networking_cisco.tests.unit.cisco.cfg_agent.'
+                               'test_cfg_agent.FakeFirewallSvcHelper',
+                               'cfg_agent')
+
         cfg.CONF.set_override('report_interval', 0, 'AGENT')
         super(TestCiscoCfgAgentWIthStateReporting, self).setUp()
         self.devmgr_plugin_api_cls_p = mock.patch(
-            'neutron.plugins.cisco.cfg_agent.cfg_agent.'
+            'networking_cisco.plugins.cisco.cfg_agent.cfg_agent.'
             'CiscoDeviceManagementApi')
         devmgr_plugin_api_cls = self.devmgr_plugin_api_cls_p.start()
         self.devmgr_plugin_api = mock.Mock()
@@ -125,7 +139,7 @@ class TestCiscoCfgAgentWIthStateReporting(base.BaseTestCase):
         self.assertEqual(0, agent.agent_state[
             'configurations']['total routers'])
 
-    @mock.patch('neutron.plugins.cisco.cfg_agent.'
+    @mock.patch('networking_cisco.plugins.cisco.cfg_agent.'
                 'cfg_agent.CiscoCfgAgentWithStateReport._agent_registration')
     def test_report_state_attribute_error(self, agent_registration):
         cfg.CONF.set_override('report_interval', 1, 'AGENT')
@@ -134,3 +148,13 @@ class TestCiscoCfgAgentWIthStateReporting(base.BaseTestCase):
         agent.heartbeat = mock.Mock()
         agent.send_agent_report(None, None)
         self.assertTrue(agent.heartbeat.stop.called)
+
+    def test_initialize_service_helpers_error(self):
+        self.conf.set_override('fw_svc_helper_class',
+                               'wrong.path.FakeFirewallSvcHelper',
+                               'cfg_agent')
+        agent = cfg_agent.CiscoCfgAgentWithStateReport(HOSTNAME, self.conf)
+        # In this error scenario the exception ImportError has been caught
+        # and fw_service_helper is set to None. So we only need to evaluate
+        # if fw_service_helper is None.
+        self.assertEqual(None, agent.fw_service_helper)
