@@ -11,7 +11,7 @@ export OSLO_PACKAGE_VERSION=$(VERSION)
 override_dh_auto_install:
 	set -e ; for pyvers in $(PYTHONS); do \
 		python$$pyvers setup.py install --install-layout=deb \
-			--root $(CURDIR)/debian/tmp; \
+			--root $(CURDIR)/debian/python-networking-cisco; \
 	done
 
 override_dh_install:
