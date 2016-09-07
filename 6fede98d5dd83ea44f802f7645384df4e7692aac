@@ -1,0 +1,10 @@
+Code-Review+1: Tom Holtzen <tholtzen@cisco.com>
+Code-Review+2: Sridar Kandaswamy <skandasw@cisco.com>
+Code-Review+2: Bob Melander <bob.melander@gmail.com>
+Workflow+1: Bob Melander <bob.melander@gmail.com>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Tue, 06 Oct 2015 12:29:54 +0000
+Reviewed-on: https://review.openstack.org/225482
+Project: openstack/deb-networking-cisco
+Branch: refs/heads/master

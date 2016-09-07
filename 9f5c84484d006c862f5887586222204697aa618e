@@ -1,0 +1,10 @@
+Code-Review+1: YAMAMOTO Takashi <yamamoto@midokura.com>
+Code-Review+2: Paul Michali <pc@michali.net>
+Code-Review+2: Sandhya Dasu <sadasu@cisco.com>
+Workflow+1: Sandhya Dasu <sadasu@cisco.com>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Fri, 11 Dec 2015 15:52:42 +0000
+Reviewed-on: https://review.openstack.org/214765
+Project: openstack/deb-networking-cisco
+Branch: refs/heads/master

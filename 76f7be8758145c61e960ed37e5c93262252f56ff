@@ -1,0 +1,11 @@
+Code-Review+2: Ihar Hrachyshka <ihrachys@redhat.com>
+Code-Review+1: Carol Bouchard <caboucha@cisco.com>
+Code-Review+1: Henry Gessau <HenryG@gessau.net>
+Code-Review+2: Kyle Mestery <mestery@mestery.com>
+Workflow+1: Kyle Mestery <mestery@mestery.com>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Wed, 05 Aug 2015 16:16:44 +0000
+Reviewed-on: https://review.openstack.org/209417
+Project: openstack/deb-networking-cisco
+Branch: refs/heads/stable/kilo

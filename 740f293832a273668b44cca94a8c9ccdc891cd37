@@ -1,0 +1,10 @@
+Code-Review+2: Henry Gessau <HenryG@gessau.net>
+Code-Review+2: Sridar Kandaswamy <skandasw@cisco.com>
+Code-Review+2: Bob Melander <bob.melander@gmail.com>
+Workflow+1: Bob Melander <bob.melander@gmail.com>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Wed, 21 Oct 2015 15:11:24 +0000
+Reviewed-on: https://review.openstack.org/237787
+Project: openstack/deb-networking-cisco
+Branch: refs/heads/master

@@ -1,0 +1,10 @@
+Code-Review+2: Kyle Mestery <mestery@mestery.com>
+Code-Review+1: Henry Gessau <HenryG@gessau.net>
+Code-Review+2: Kevin Benton <kevin@benton.pub>
+Workflow+1: Kevin Benton <kevin@benton.pub>
+Verified+2: Jenkins
+Submitted-by: Jenkins
+Submitted-at: Fri, 28 Aug 2015 17:34:11 +0000
+Reviewed-on: https://review.openstack.org/217682
+Project: openstack/deb-networking-cisco
+Branch: refs/heads/stable/kilo
