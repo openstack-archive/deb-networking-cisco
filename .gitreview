@@ -1,4 +1,5 @@
 [gerrit]
 host=review.openstack.org
 port=29418
-project=stackforge/networking-cisco.git
+project=openstack/deb-networking-cisco.git
+defaultbranch=debian/newton
